@@ -11,6 +11,8 @@ import ru.jointvibe.common.pojo.TrackEntity;
 import ru.jointvibe.common.pojo.TrackList;
 import ru.jointvibe.service.JukeboxStore;
 
+import static java.util.Arrays.asList;
+
 @Controller
 @Slf4j
 public class MusicController {
@@ -44,16 +46,42 @@ public class MusicController {
     @MessageMapping("/test")
     public void getTest() {
         log.info("getTest() called!");
-        simpMessagingTemplate.convertAndSend(TOPIC_ENDPOINT, getTestTrackList());
+        simpMessagingTemplate.convertAndSend(TOPIC_ENDPOINT, testTrackList());
     }
 
-    private TrackList getTestTrackList() {
+    @MessageMapping("/test1")
+    public void getTest1() {
+        log.info("getTest1() called!");
+        simpMessagingTemplate.convertAndSend(TOPIC_ENDPOINT, testTrackList1());
+    }
+
+    private TrackList testTrackList() {
         return TrackList.builder()
-                .nowPlaying(
-                        TrackEntity.builder()
-                                .trackName("test")
-                                .build())
+                .nowPlaying(testTrack("first"))
+                .tracks(asList(
+                        testTrack("second"),
+                        testTrack("third")
+                ))
                 .build();
     }
 
+    private TrackList testTrackList1() {
+        return TrackList.builder()
+                .nowPlaying(testTrack("second", "Nomak - Chrystaline.mp3"))
+                .tracks(asList(
+                        testTrack("third")
+                ))
+                .build();
+    }
+
+    private TrackEntity testTrack(String name, String url) {
+        return TrackEntity.builder()
+                .trackName(name)
+                .trackUrl(url)
+                .build();
+    }
+
+    private TrackEntity testTrack(String name) {
+        return testTrack(name, "Lemaitre - Go.mp3");
+    }
 }
