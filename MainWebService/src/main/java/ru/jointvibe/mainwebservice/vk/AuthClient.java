@@ -18,6 +18,9 @@ public class AuthClient {
     @Autowired
     private Users users;
 
+    /**
+     * Send request to VK for access token
+     */
     public VkUser getToken(String code) {
         try {
             HttpClient client = HttpClientBuilder.create().build();
