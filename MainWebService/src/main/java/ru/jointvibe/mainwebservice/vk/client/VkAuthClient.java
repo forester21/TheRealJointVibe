@@ -1,4 +1,4 @@
-package ru.jointvibe.mainwebservice.vk;
+package ru.jointvibe.mainwebservice.vk.client;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -8,12 +8,14 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.jointvibe.mainwebservice.vk.Users;
+import ru.jointvibe.mainwebservice.vk.VkUser;
 import ru.jointvibe.mainwebservice.vk.request.VkApi;
 
 import java.io.IOException;
 
 @Component
-public class AuthClient {
+public class VkAuthClient {
 
     @Autowired
     private Users users;

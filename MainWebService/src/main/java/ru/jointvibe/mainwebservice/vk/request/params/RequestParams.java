@@ -1,4 +1,4 @@
-package ru.jointvibe.mainwebservice.vk.request;
+package ru.jointvibe.mainwebservice.vk.request.params;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +16,8 @@ public abstract class RequestParams {
     public RequestParams(String destination) {
         this.destination = destination;
     }
+
+    public abstract RequestParams apiVerison(String apiVersion);
 
     public String build() {
         return destination + "?" + join(convertParamsMap(), "&");

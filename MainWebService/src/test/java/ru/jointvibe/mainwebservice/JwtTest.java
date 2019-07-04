@@ -14,7 +14,7 @@ public class JwtTest {
         String token = JWT.create()
                 .withIssuer("JV!")
                 .withAudience("JV!")
-                .withClaim("321", "123")
+                .withClaim("userId", 123)
                 .sign(algorithmHS);
         System.out.println(token);
 

@@ -1,6 +1,8 @@
-package ru.jointvibe.mainwebservice.vk.request;
+package ru.jointvibe.mainwebservice.vk.request.builder;
 
-public class RequestBuilder {
+import ru.jointvibe.mainwebservice.vk.request.params.AuthParams;
+
+public class VkAuthRequestBuilder {
 
     private static final String OAUTH_URL = "https://oauth.vk.com";
 

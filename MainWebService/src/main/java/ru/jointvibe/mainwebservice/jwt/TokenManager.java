@@ -14,6 +14,10 @@ import static ru.jointvibe.mainwebservice.security.SecurityConfig.SECRET;
  */
 public class TokenManager {
 
+    //Parameters, stored in JWT
+    public static final String VK_KEY = "vkKey";
+    public static final String USER_ID = "userId";
+
     private static final Algorithm algorithmHS = Algorithm.HMAC256(SECRET);
     private static final JWTVerifier verifier;
 
@@ -28,8 +32,8 @@ public class TokenManager {
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withAudience(API_AUDIENCE)
-                .withClaim("vkKey", vkKey)
-                .withClaim("userId", userId)
+                .withClaim(VK_KEY, vkKey)
+                .withClaim(USER_ID, userId)
                 .sign(algorithmHS);
     }
 

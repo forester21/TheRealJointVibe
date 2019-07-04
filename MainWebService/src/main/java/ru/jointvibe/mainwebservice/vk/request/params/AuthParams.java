@@ -1,4 +1,4 @@
-package ru.jointvibe.mainwebservice.vk.request;
+package ru.jointvibe.mainwebservice.vk.request.params;
 
 public class AuthParams extends RequestParams {
 
